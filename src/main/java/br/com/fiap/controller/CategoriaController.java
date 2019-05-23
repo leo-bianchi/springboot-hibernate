@@ -49,7 +49,7 @@ public class CategoriaController {
 	@GetMapping(value = "/{id}")
 	public String getById(@PathVariable("id") long id, @RequestParam(required=false) boolean isEdit, Model model) {
 
-		model.addAttribute("categoriaModel", categoriaRepository.findById(id));
+		model.addAttribute("categoriaModel", categoriaRepository.findById(id).get());
 		
 		return CATEGORIA_PATH + (isEdit ? "categoria-editar": "categoria-detalhe");
 	}
