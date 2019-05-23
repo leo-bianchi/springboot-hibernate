@@ -48,7 +48,7 @@ public class ProdutoController {
 	@GetMapping(value = "/{id}")
 	public String getById(@PathVariable("id") long id, @RequestParam(required=false) boolean isEdit, Model model) {
 
-		model.addAttribute("produtoModel", produtoRepository.findById(id));
+		model.addAttribute("produtoModel", produtoRepository.findById(id).get());
 		
 		if(isEdit) {
 			model.addAttribute("categorias", categoriaRepository.findAll());
