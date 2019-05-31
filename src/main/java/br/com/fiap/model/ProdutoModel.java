@@ -29,20 +29,23 @@ public class ProdutoModel {
 	private String nome;
 	private String sku;
 	private String descricao;
+	// Por restrições do banco de dados, o campo float tem que virar BigDecimal
 	private BigDecimal preco;
 	private String caracteristicas;
 	private Date dataLancamento;
+	// Para relacionar com categorias
 	private CategoriaModel categoriaModel;
 
 	public ProdutoModel() {
 	}
-
+	
 	public ProdutoModel(long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
 
+	// Construtor completo do objeto
 	public ProdutoModel(long id, String nome, String sku, String descricao, BigDecimal preco, String caracteristicas,
 			Date dataLancamento, CategoriaModel categoriaModel) {
 		super();
@@ -132,7 +135,9 @@ public class ProdutoModel {
 		this.dataLancamento = dataLancamento;
 	}
 
+	// Uma categoria para muitos produtos
 	@ManyToOne
+	// Coluna que será feito o 'JOIN', deve ser obrigatório
 	@JoinColumn(name = "ID_CATEGORIA", nullable = false)
 	public CategoriaModel getCategoriaModel() {
 		return categoriaModel;
